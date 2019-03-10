@@ -1,6 +1,7 @@
 local gpu = require("component").gpu
 local filesystem = require("filesystem")
 local io = require("io")
+local event = require("event")
 
 local palette = { 0x0F0F0F, 0xFFFFFF, 0xFF0000, 0x00FF00, 0x0000FF }
 
@@ -40,3 +41,5 @@ end
 
 file:close()
 gpu.setBackground(0x000000)
+
+event.pull()
