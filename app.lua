@@ -2,6 +2,8 @@ local gpu = require("component").gpu
 local filesystem = require("filesystem")
 local io = require("io")
 
+local palette = { 0x000000, 0xFFFFFF, 0xFF0000, 0x00FF00, 0x0000FF }
+
 size = filesystem.size("home/app/app/resourses/icon.pic")
 local file = filesystem.open("/home/app/app/resourses/icon.pic", "r")
 
@@ -30,11 +32,7 @@ y = tonumber(ys)
 
 for i=1, y do
   for j=1, x do
-    if(file:read(1)=="1")then
-      gpu.setBackground(0x00FF77)
-    else
-      gpu.setBackground(0x000000)
-    end
+    gpu.setBackground(palette[tonumber(file:read(1))])
     gpu.set(j, i, " ")
   end
 end
